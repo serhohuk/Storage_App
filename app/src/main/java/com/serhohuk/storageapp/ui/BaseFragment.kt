@@ -1,20 +1,19 @@
-package com.serhohuk.storageapp
+package com.serhohuk.storageapp.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.serhohuk.storageapp.R
+import com.serhohuk.storageapp.ui.otm.OtMFragment
+import com.serhohuk.storageapp.ui.otm.PersonsFamilyFragment
 
 open class BaseFragment : Fragment() {
-
-    fun navigateToOtOFragment(fm: FragmentManager) {
-        replaceFragmentWithBackStack(fm, OtOFragment())
-    }
 
     fun navigateToOtMFragment(fm: FragmentManager) {
         replaceFragmentWithBackStack(fm, OtMFragment())
     }
 
-    fun navigateToMtMFragment(fm: FragmentManager) {
-        replaceFragmentWithBackStack(fm, MtMFragment())
+    fun navigateToPersonsFragment(fm: FragmentManager, familyId: Int) {
+        replaceFragmentWithBackStack(fm , PersonsFamilyFragment.newInstance(familyId))
     }
 
     private fun replaceFragmentWithBackStack(fm: FragmentManager, fragment: Fragment) {

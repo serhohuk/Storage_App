@@ -1,7 +1,8 @@
-package com.serhohuk.storageapp
+package com.serhohuk.storageapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.serhohuk.storageapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
