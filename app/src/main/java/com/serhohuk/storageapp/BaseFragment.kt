@@ -9,6 +9,10 @@ open class BaseFragment : Fragment() {
         replaceFragmentWithBackStack(fm, OtMFragment())
     }
 
+    fun navigateToPlayersFragment(fm: FragmentManager, teamId: Int) {
+        replaceFragmentWithBackStack(fm, PlayersFragment.newInstance(teamId))
+    }
+
     private fun replaceFragmentWithBackStack(fm: FragmentManager, fragment: Fragment) {
         fm.beginTransaction()
             .replace(R.id.container, fragment, fragment.javaClass.simpleName)

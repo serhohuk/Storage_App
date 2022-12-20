@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
-import androidx.fragment.app.Fragment
 
 class MainFragment : BaseFragment() {
 
@@ -37,21 +36,9 @@ class MainFragment : BaseFragment() {
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     BaseButton(
-                        text = "One to one",
-                        onClick = {
-                            navigateToOtOFragment(requireActivity().supportFragmentManager)
-                        }
-                    )
-                    BaseButton(
                         text = "One to many",
                         onClick = {
                             navigateToOtMFragment(requireActivity().supportFragmentManager)
-                        }
-                    )
-                    BaseButton(
-                        text = "Many to many",
-                        onClick = {
-                            navigateToMtMFragment(requireActivity().supportFragmentManager)
                         }
                     )
                 }
