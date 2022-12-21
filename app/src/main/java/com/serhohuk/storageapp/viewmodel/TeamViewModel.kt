@@ -22,13 +22,13 @@ class TeamViewModel(
     }
 
     fun getAllTeams() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             _teams.postValue(appDao.getAllTeams().toList())
         }
     }
 
     fun saveTeam(name: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             appDao.insertAllTeams(Team(0, name))
             _teams.postValue(appDao.getAllTeams().toList())
         }

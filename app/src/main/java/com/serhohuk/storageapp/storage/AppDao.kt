@@ -13,20 +13,16 @@ import com.serhohuk.storageapp.models.TeamWithPlayers
 interface AppDao {
 
     @Query("SELECT * FROM team_table")
-    fun getAllTeams() : List<Team>
-
-    @Transaction
-    @Query("SELECT * FROM team_table")
-    fun getTeamsWithPlayers() : List<TeamWithPlayers>
+    suspend fun getAllTeams() : List<Team>
 
     @Transaction
     @Query("SELECT * FROM team_table WHERE teamId=:teamId")
-    fun getTeamWithPlayersById(teamId: Int) : TeamWithPlayers
+    suspend fun getTeamWithPlayersById(teamId: Int) : TeamWithPlayers
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllTeams(vararg team: Team)
+    suspend fun insertAllTeams(vararg team: Team)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllPlayers(vararg player: Player)
+    suspend fun insertAllPlayers(vararg player: Player)
 
 }

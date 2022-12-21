@@ -23,16 +23,15 @@ class PlayersViewModel(
     }
 
     private fun getPlayers() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val data = dao.getTeamWithPlayersById(teamId)
-            val data2 = dao.getTeamsWithPlayers()
             _players.postValue(data.players.toList())
         }
     }
 
 
     fun savePlayer(name: String, age: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             val player = Player(0, teamId, name, age)
             dao.insertAllPlayers(player)
             val data = dao.getTeamWithPlayersById(teamId)

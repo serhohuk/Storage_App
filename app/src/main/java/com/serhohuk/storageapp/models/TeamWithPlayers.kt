@@ -8,7 +8,7 @@ data class TeamWithPlayers(
     val team: Team,
     @Relation(
         parentColumn = "teamId",
-        entityColumn = "playerId"
+        entityColumn = "teamId"
     )
     val players: List<Player>
 )
