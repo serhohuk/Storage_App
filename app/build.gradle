@@ -46,10 +46,13 @@ android {
 
 }
 
+//Pre build format configuration
+//tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+
 ktlint {
     android = true
     ignoreFailures = false
-    disabledRules = ["final-newline"]
+    disabledRules = ["final-newline", "no-wildcard-imports"]
     reporters {
         reporter "plain"
         reporter "checkstyle"
