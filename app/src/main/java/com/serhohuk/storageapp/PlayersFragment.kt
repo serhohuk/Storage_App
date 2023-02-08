@@ -2,7 +2,6 @@ package com.serhohuk.storageapp
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -32,7 +31,6 @@ class PlayersFragment : BaseFragment() {
         parametersOf(requireArguments().getInt(ARG_TEAM_ID))
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,7 +48,9 @@ class PlayersFragment : BaseFragment() {
     companion object {
         private const val ARG_TEAM_ID = "argTeamId"
 
-        fun newInstance(id: Int): PlayersFragment {
+        fun newInstance(
+            id: Int
+        ): PlayersFragment {
             val fragment = PlayersFragment()
             fragment.arguments = bundleOf(
                 ARG_TEAM_ID to id
@@ -64,7 +64,10 @@ class PlayersFragment : BaseFragment() {
 @Composable
 fun PlayersScreen(
     list: List<Player>,
-    onSaveClick: (String, Int) -> Unit
+    onSaveClick: (
+        String,
+        Int
+    ) -> Unit
 ) {
     var name = remember {
         mutableStateOf("")
@@ -82,7 +85,8 @@ fun PlayersScreen(
         ) {
             Text(text = "Players", style = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(24.dp))
-            TextField(modifier = Modifier.fillMaxWidth(),
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
                 value = age.value.toString(),
                 onValueChange = { data ->
                     age.value = data
@@ -92,18 +96,22 @@ fun PlayersScreen(
                 },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
-            TextField(modifier = Modifier.fillMaxWidth(),
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
                 value = name.value,
                 onValueChange = {
                     name.value = it
                 },
                 placeholder = {
                     Text(text = "Player name")
-                })
-            Button(modifier = Modifier.fillMaxWidth(),
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     onSaveClick(name.value, age.value.toInt())
-                }) {
+                }
+            ) {
                 Text(text = "Save Player")
             }
             Spacer(Modifier.height(16.dp))
@@ -113,13 +121,16 @@ fun PlayersScreen(
                     items(list) { player ->
                         PlayerItem(player = player)
                     }
-                })
+                }
+            )
         }
     }
 }
 
 @Composable
-fun PlayerItem(player: Player) {
+fun PlayerItem(
+    player: Player
+) {
     Card(
         Modifier
             .fillMaxWidth()

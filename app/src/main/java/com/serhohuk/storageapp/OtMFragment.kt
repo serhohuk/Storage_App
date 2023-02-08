@@ -43,18 +43,20 @@ class OtMFragment : BaseFragment() {
                     it
                 )
             })
-
         }
     }
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TeamScreen(
     list: List<Team>,
-    onSaveClick: (String) -> Unit,
-    onItemClick: (Int) -> Unit
+    onSaveClick: (
+        String
+    ) -> Unit,
+    onItemClick: (
+        Int
+    ) -> Unit
 ) {
     var teamName = remember {
         mutableStateOf("")
@@ -69,18 +71,22 @@ fun TeamScreen(
         ) {
             Text(text = "One to many", style = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(24.dp))
-            TextField(modifier = Modifier.fillMaxWidth(),
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
                 value = teamName.value,
                 onValueChange = {
                     teamName.value = it
                 },
                 placeholder = {
                     Text(text = "Team")
-                })
-            Button(modifier = Modifier.fillMaxWidth(),
+                }
+            )
+            Button(
+                modifier = Modifier.fillMaxWidth(),
                 onClick = {
                     onSaveClick(teamName.value)
-                }) {
+                }
+            ) {
                 Text(text = "Save Team")
             }
             Spacer(Modifier.height(16.dp))
@@ -92,13 +98,19 @@ fun TeamScreen(
                             onItemClick(id)
                         })
                     }
-                })
+                }
+            )
         }
     }
 }
 
 @Composable
-fun TeamItem(team: Team, onClick: (Int) -> Unit) {
+fun TeamItem(
+    team: Team,
+    onClick: (
+        Int
+    ) -> Unit
+) {
     Card(
         Modifier
             .fillMaxWidth()

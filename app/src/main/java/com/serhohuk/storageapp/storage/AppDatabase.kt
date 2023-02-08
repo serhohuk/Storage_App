@@ -7,8 +7,7 @@ import com.serhohuk.storageapp.models.Team
 
 const val DATABASE_VERSION = 1
 
-@Database(entities =[Team::class, Player::class], version = DATABASE_VERSION, exportSchema = false)
+@Database(entities = [Team::class, Player::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun appDao() : AppDao
-
+    abstract fun appDao(): AppDao
 }

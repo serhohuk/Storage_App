@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.serhohuk.storageapp.models.Team
 import com.serhohuk.storageapp.storage.AppDao
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TeamViewModel(
@@ -14,8 +13,8 @@ class TeamViewModel(
 ) : ViewModel() {
 
     private val _teams = MutableLiveData<List<Team>>()
-    val teams : LiveData<List<Team>>
-    get() = _teams
+    val teams: LiveData<List<Team>>
+        get() = _teams
 
     init {
         getAllTeams()
@@ -27,11 +26,12 @@ class TeamViewModel(
         }
     }
 
-    fun saveTeam(name: String) {
+    fun saveTeam(
+        name: String
+    ) {
         viewModelScope.launch {
             appDao.insertAllTeams(Team(0, name))
             _teams.postValue(appDao.getAllTeams().toList())
         }
     }
-
 }

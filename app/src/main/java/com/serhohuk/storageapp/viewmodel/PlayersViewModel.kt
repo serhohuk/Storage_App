@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.serhohuk.storageapp.models.Player
 import com.serhohuk.storageapp.storage.AppDao
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PlayersViewModel(
@@ -29,8 +28,10 @@ class PlayersViewModel(
         }
     }
 
-
-    fun savePlayer(name: String, age: Int) {
+    fun savePlayer(
+        name: String,
+        age: Int
+    ) {
         viewModelScope.launch {
             val player = Player(0, teamId, name, age)
             dao.insertAllPlayers(player)

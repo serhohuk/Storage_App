@@ -3,7 +3,6 @@ package com.serhohuk.storageapp
 import android.app.Application
 import com.serhohuk.storageapp.di.appModule
 import com.serhohuk.storageapp.di.screenModule
-import com.serhohuk.storageapp.storage.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
