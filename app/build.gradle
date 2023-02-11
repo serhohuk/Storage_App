@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
+    id "io.gitlab.arturbosch.detekt" version "1.22.0"
 }
 
 apply plugin: "realm-android"
@@ -47,6 +48,14 @@ android {
 
 }
 
+detekt {
+    toolVersion = "1.22.0"
+    buildUponDefaultConfig = true // preconfigure defaults
+    allRules = false // activate all available (even unstable) rules.
+    config = files("/Users/serh.hryhorchuk/AndroidStudioProjects/StorageApp/config/detekt/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
+    //baseline = file("$projectDir/config/baseline.xml") // a way of suppressing issues before introducing detekt
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -57,6 +66,8 @@ dependencies {
     def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
     implementation composeBom
     androidTestImplementation composeBom
+
+    implementation "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.22.0"
 
     // Choose one of the following:
     // Material Design 3
